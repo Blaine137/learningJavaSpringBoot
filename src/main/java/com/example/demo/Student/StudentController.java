@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,5 +23,10 @@ public class StudentController {
     @GetMapping //states this function is called for a get request ("api/v1/students")
 	public List<Student> getStudents(){
 		return studentService.getStudents();
+	}
+
+	@PostMapping //states this function is a post request
+	public void registerNewStudent(@RequestBody Student student){
+		studentService.addNewStudent(student);
 	}
 }
